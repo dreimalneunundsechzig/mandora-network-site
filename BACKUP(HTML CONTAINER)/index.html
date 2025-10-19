@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mandora Network</title>
+<style>
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: #0b0b0b;
+  color: #e9eef6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  transition: 300ms ease, backdrop-filter 300ms ease;
+  background: transparent;
+}
+nav.scrolled {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+}
+nav a {
+  color: #f0f6ff;
+  font-weight: 600;
+  padding: 0.35rem 0.2rem;
+  position: relative;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: #38bdf8;
+  transition: width 0.25s;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+#bgParticlesCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 10000;
+}
+#intro img {
+  width: 96px;
+  animation: logoGrow 2s forwards;
+  display: block;
+}
+@keyframes logoGrow {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(4.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4.6);
+    opacity: 0;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#startseite {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: url("assets/img/start-bgnew.png") center center / cover no-repeat
+    fixed;
+  overflow: hidden;
+}
+
+#startseite::before {
+  display: none;
+}
+
+#startseite .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+#startseite h1 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  letter-spacing: .025em;
+  color: #38bdf8;
+  font-weight: 700;
+  text-shadow: 0 6px 30px rgba(56, 189, 248, 0.12);
+}
+.hero-arrow {
+  margin-top: 6px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.arrow {
+  width: 26px;
+  height: 26px;
+  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transform: rotate(-45deg);
+  animation: bounce 1s infinite;
+  opacity: 0.95;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-45deg);
+  }
+}
+
+section {
+  position: relative;
+  z-index: 3;
+  padding: 3.5rem 1rem;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+#about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+#about .stage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#about .left-visual {
+  position: absolute;
+  left: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 360px;
+  height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+#about .logo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 470px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.8s ease, opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+#about .char {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.8s ease, opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+#about .char.hidden {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+#about .char.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#about .center {
+  width: 65%;
+  max-width: 900px;
+  padding: 2rem;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding-left: 420px;
+}
+#about .bigText {
+  font-size: clamp(28px, 5.5vw, 54px);
+  font-weight: 800;
+  color: #fff;
+  text-align: left;
+  line-height: 1.02;
+}
+#about .sub {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  text-align: left;
+  max-width: 900px;
+}
+
+.steps-wrap {
+  padding-top: 2rem;
+  padding-bottom: 3.5rem;
+  background: url("assets/img/bg_2.png") center/cover no-repeat fixed;
+  border-radius: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  overflow: visible;
+  max-width: 1500px;
+}
+.steps-wrap {
+  margin-bottom: 3rem;
+}
+
+.crimelife-wrap {
+  margin-top: 3rem;
+}
+
+.steps-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.steps-intro {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.steps-grid {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.timeline-col {
+  flex: 0 0 160px;
+  position: relative;
+  padding-left: 10px;
+}
+.timeline-col::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(#38bdf8, #7dd3fc);
+  opacity: 0.12;
+  border-radius: 2px;
+}
+.steps-list {
+  flex: 1;
+  min-width: 300px;
+}
+ol.steps {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+ol.steps li {
+  position: relative;
+  padding: 12px 18px;
+  margin-bottom: 36px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  opacity: 0;
+  transform: translateY(12px);
+}
+ol.steps li.visible {
+  opacity: 1;
+  transform: none;
+}
+ol.steps li .circle {
+  min-width: 54px;
+  min-height: 54px;
+  border-radius: 50%;
+  border: 3px solid #38bdf8;
+  background: linear-gradient(180deg, #071422, #061226);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #38bdf8;
+  font-size: 18px;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.06);
+  position: relative;
+  z-index: 2;
+}
+ol.steps li .leg {
+  position: absolute;
+  left: 43px;
+  top: 58px;
+  width: 4px;
+  height: 0;
+  background: #38bdf8;
+  border-radius: 3px;
+  opacity: 0.85;
+  transition: height 450ms ease;
+}
+ol.steps li .content {
+  flex: 1;
+}
+ol.steps li .content h4 {
+  font-size: 1.05rem;
+  color: #e6f4ff;
+  margin-bottom: 6px;
+}
+ol.steps li .content p {
+  color: #c7d6e6;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+#projects {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+#projects .projects-inner {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+}
+.project-card {
+  width: 260px;
+  background: rgba(10, 10, 12, 0.7);
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+.project-card img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  display: block;
+}
+.project-card h3 {
+  color: #38bdf8;
+  margin-bottom: 6px;
+}
+.project-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.project-card button {
+  background: #38bdf8;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+#projectsFireCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#team {
+  min-height: 80vh;
+  padding-top: 4rem;
+  padding-bottom: 0rem;
+  position: relative;
+  overflow: visible;
+}
+#team .team-inner {
+  position: relative;
+  z-index: 6;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  border-left: 3px solid rgba(56, 189, 248, 0.12);
+}
+.rank {
+  margin: 2.25rem 0;
+  padding-left: 1rem;
+}
+.rank h3 {
+  color: #cfeffd;
+  margin-bottom: 10px;
+}
+
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.member {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.member img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  background: #111;
+}
+
+.member span {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #dff8ff;
+  text-align: center;
+}
+
+#teamBgCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+footer {
+  padding: 2rem;
+  text-align: center;
+  color: #7b8aa3;
+}
+
+@media (max-width: 1000px) {
+  #about .center {
+    padding-left: 36px;
+    width: 90%;
+  }
+  #about .left-visual {
+    display: none;
+  }
+  .timeline-col {
+    display: none;
+  }
+  .steps-grid {
+    flex-direction: column;
+  }
+  .project-card {
+    width: 220px;
+  }
+}
+
+#main-footer {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  max-width: 150px;
+}
+
+.footer-desc {
+  max-width: 600px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.footer-discord {
+  display: inline-block;
+}
+
+.discord-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.discord-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(33%) sepia(92%) saturate(2092%) hue-rotate(185deg) brightness(98%) contrast(101%);
+  transition: transform 0.3s ease;
+}
+
+
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.footer-left, .footer-right {
+  margin: 0.25rem 0;
+}
+
+.footer-line {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 1rem 0;
+}
+
+.footer-bottom {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.8;
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- GLOBAL PARTICLES  -->
+<canvas id="bgParticlesCanvas"></canvas>
+
+<!-- INTRO -->
+<div id="intro"><img src="assets/img/logo.png" alt="Mandora Logo"/></div>
+
+<!-- NAV -->
+<nav id="topNav">
+  <a href="#startseite">Startseite</a>
+  <a href="#about">Über Mandora</a>
+  <a href="#steps-roleplay">So wirst du Teil</a>
+  <a href="#steps-crime">Crimelife</a>
+  <a href="#projects">Projekte</a>
+  <a href="#team">Team</a>
+</nav>
+
+<!-- START -->
+<section id="startseite" aria-label="Startseite">
+  <div class="content">
+    <h1>
+  <span style="font-size: 2rem; font-weight: 400; color: #dff8ff; letter-spacing: 1px;">
+    WILLKOMMEN AUF
+  </span>
+  <br><br>
+  <span style="font-size: 4rem; font-weight: 800; color: #38bdf8; letter-spacing: 2px;">
+    MANDORA NETWORK
+  </span>
+</h1>
+
+    <div class="hero-arrow" id="scrollArrow" title="Runterscrollen">
+      <div class="arrow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-label="Über Mandora">
+  <div class="stage">
+    <div class="left-visual" aria-hidden="true">
+      <div id="logo-about" class="logo" style="background-image:url('assets/img/logo.png');"></div>
+      <div id="char1" class="char hidden" style="background-image:url('assets/img/char_1.png');"></div>
+      <div id="char2" class="char hidden" style="background-image:url('assets/img/char-2.png');"></div>
+      <div id="char3" class="char hidden" style="background-image:url('assets/img/char-3.png');"></div>
+      <div id="char4" class="char hidden" style="background-image:url('assets/img/char-4.png');"></div>
+    </div>
+
+    <div class="center" role="region" aria-labelledby="aboutTitle">
+      <div id="aboutTitle" class="bigText">Mandora Network</div>
+      <div class="sub">
+        Mandora Network begann ursprünglich als klassisches FiveM-Roleplay-Projekt. Alles nahm seinen Anfang, als das ehemalige Teammitglied Siera den Kontakt zu „dreimalneunundsechzig“ herstellte. Durch diese Verbindung konnte sich das Entwicklungsteam erheblich erweitern und wuchs schnell auf drei Personen an. Nach einigen Rückschlägen mit Verlusten im Team und der Community wurde das Projekt zwar vorübergehend eingestellt, doch die gemeinsamen Visionen und die starke Motivation hielten das Team zusammen. Doch heute bauen wir mit einem neuen, anfangs kleinen engagierten Team und frischem Konzept wieder auf: Wir betreiben einen erfolgreichen Crimelife-Server namens Mandora Crimelife V2 auf FiveM sowie einen brandneuen RageMP-Roleplay-Server — Mandora Roleplay. Unsere Leidenschaft und unser stetiger Wille zur Weiterentwicklung machen Mandora Network zu einer wachsenden und aufbauenden deutschsprachigen GTA V Roleplay, sowie GTA V Crimelife Community.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS: RAGEMP ROLEPLAY -->
+<section id="steps-roleplay" class="steps-wrap" aria-label="So wirst du Teil von Mandora Roleplay">
+  <div class="steps-inner">
+    <div class="steps-intro">
+      <h2>So wirst du Teil von Mandora Roleplay</h2>
+      <p>In nur wenigen Schritten wirst du Teil unserer Community und kannst mit deinem Charakter bei uns durchstarten.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="timeline-col" aria-hidden="true">
+      </div>
+
+      <div class="steps-list">
+        <ol class="steps" id="rpSteps">
+          <li>
+            <div class="circle">1</div>
+            <div class="leg"></div>
+            <div class="content">
+              <h4>GTAV für PC</h4>
+              <p>Installiere GTA V (Legacy) über Steam, Rockstar Games Launcher oder Epic. Illegale Installationen werden nicht unterstützt.</p>
+            </div>
+          </li>
+          <li>
+            <div class="circle">2</div>
+            <div class="leg"></div>
+            <div class="content">
+              <h4>RageMP Client</h4>
+              <p>Installiere den offiziellen RageMP Client und suche im Launcher nach „Mandora Roleplay“. Verbinde dich mit unserem Server.</p>
+            </div>
+          </li>
+          <li>
+            <div class="circle">3</div>
+            <div class="leg"></div>
+            <div class="content">
+              <h4>Discord beitreten</h4>
+              <p>Tritt unserem Discord bei — dort läuft die Community, Support und alles Wichtige.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS: CRIMELIFE -->
+<section id="steps-crime" class="steps-wrap" aria-label="So wirst du Teil von Mandora Crimelife">
+  <div class="steps-inner">
+    <div class="steps-intro">
+      <h2>So wirst du Teil von Mandora Crimelife</h2>
+      <p>Die Schritte sind ähnlich — bei Fragen hilft unser Discord.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="timeline-col" aria-hidden="true"></div>
+      <div class="steps-list">
+        <ol class="steps" id="crimeSteps">
+          <li>
+            <div class="circle">1</div>
+            <div class="leg"></div>
+            <div class="content">
+              <h4>GTAV für PC</h4>
+              <p>Installiere GTA V korrekt über die offiziellen Launcher.</p>
+            </div>
+          </li>
+          <li>
+            <div class="circle">2</div>
+            <div class="leg"></div>
+            <div class="content">
+              <h4>FiveM / Crimelife</h4>
+              <p>Nutze FiveM und suche nach „Mandora Crimelife V2“ oder folge unserer Anleitung im Discord.</p>
+            </div>
+          </li>
+          <li>
+            <div class="circle">3</div>
+            <div class="leg"></div>
+            <div class="content">
+              <h4>Discord beitreten</h4>
+              <p>Tritt unserem Discord bei — dort erhältst du Zugang und Support.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" aria-label="Projekte">
+  <canvas id="projectsFireCanvas"></canvas>
+
+  <div class="projects-inner">
+    <h2 style="width:100%;text-align:center;color:#dff8ff;margin-bottom:1rem">Projekte vom Mandora Network</h2>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;width:100%">
+      <div class="project-card">
+        <img src="assets/img/logo.png" alt="Mandora Roleplay"/>
+        <h3>Mandora Roleplay</h3>
+        <p>Ein RageMP Roleplay Projekt vom Mandora Network.</p>
+        <button onclick="window.open('https://discord.gg/65waDGyUqj','_blank')">Discord beitreten</button>
+      </div>
+      <div class="project-card">
+        <img src="assets/img/logo.png" alt="Mandora Crimelife"/>
+        <h3>Mandora Crimelife</h3>
+        <p>Ein FiveM Crimelife Projekt vom Mandora Network.</p>
+        <button onclick="window.open('https://discord.gg/65waDGyUqj','_blank')">Discord beitreten</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" aria-label="Team">
+  <canvas id="teamBgCanvas"></canvas>
+
+  <div class="team-inner">
+    <h2 style="text-align:center;color:#dff8ff;margin-bottom:1.25rem">
+      Das Mandora Network Team
+    </h2>
+
+    <div class="timeline">
+      <div class="rank">
+        <h3>Projektleitung</h3>
+        <div class="members">
+          <div class="member"><img src="assets/img/team/leon.png" alt="Leon"><span>Leon</span></div>
+          <div class="member"><img src="assets/img/team/erik.png" alt="Erik"><span>Erik</span></div>
+          <div class="member"><img src="assets/img/team/max.png" alt="Max"><span>Max</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <h3>Stv. Projektleitungen</h3>
+        <div class="members">
+          <div class="member"><img src="assets/img/team/696969.png" alt="696969"><span>696969</span></div>
+          <div class="member"><img src="assets/img/team/julian.png" alt="Julian"><span>Julian</span></div>
+          <div class="member"><img src="assets/img/team/legit2k.png" alt="Legit2k"><span>Legit2k</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <h3>Entwicklungsleitungen</h3>
+        <div class="members">
+          <div class="member"><img src="assets/img/team/fireninja.png" alt="FireNinja"><span>FireNinja</span></div>
+          <div class="member"><img src="assets/img/team/696969.png" alt="696969"><span>696969</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <h3>Entwickler</h3>
+        <div class="members">
+          <div class="member"><img src="assets/img/team/evelina.png" alt="Evelina"><span>Evelina</span></div>
+          <div class="member"><img src="assets/img/team/696969.png" alt="696969"><span>696969</span></div>
+          <div class="member"><img src="assets/img/team/fireninja.png" alt="FireNinja"><span>FireNinja</span></div>
+        </div>
+      </div>
+
+      <div class="rank">
+        <h3>Moderatoren</h3>
+        <div class="members">
+          <div class="member"><img src="assets/img/team/marie.png" alt="Marie"><span>Marie</span></div>
+          <div class="member"><img src="assets/img/team/ivano.png" alt="Ivano"><span>Ivano</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer id="main-footer">
+  <div class="footer-top">
+    <img src="assets/img/logo.png" alt="Mandora Network Logo" class="footer-logo">
+    <p class="footer-desc">Eine aufbauende deutschsprachige GTA 5 Roleplay Community auf der RageMP-Plattform.</p>
+    <a href="https://discord.gg/65waDGyUqj" target="_blank" class="footer-discord">
+      <img src="assets/img/discord.png" alt="Discord" class="discord-icon">
+    </a>
+  </div>
+
+  <div class="footer-middle">
+    <span class="footer-left">© 2025 Mandora Network. Alle Rechte vorbehalten.</span>
+    <span class="footer-right">Mit 💙 in Deutschland entwickelt</span>
+  </div>
+
+  <hr class="footer-line">
+
+  <div class="footer-bottom">
+    <p>Grand Theft Auto und GTA sind eingetragene Marken von Rockstar Games. Mandora Network steht in keiner Verbindung mit Rockstar Games oder Take-Two Interactive.</p>
+  </div>
+</footer>
+
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('intro').style.display = 'none';
+    initBgParticles();
+    $('#startseite').classList.add('visible');
+    handleNav();
+    initObservers();
+    startCharLoop();
+    initProjectsFire();
+    initTeamBg();
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const targetEl = document.getElementById(targetId);
+        if(targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }, 2000);
+});
+
+const nav = $('#topNav');
+function handleNav(){
+  if(window.scrollY > 10) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+}
+window.addEventListener('scroll', handleNav);
+
+$('#scrollArrow').addEventListener('click', ()=>{document.querySelector('#about').scrollIntoView({behavior:'smooth'})});
+
+
+function initObservers(){
+  const opts = {threshold:0.15};
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); 
+        if(e.target.id === 'steps-roleplay') animateSteps('#rpSteps');
+        if(e.target.id === 'steps-crime') animateSteps('#crimeSteps');
+        if(e.target.id === 'projects') startProjectsFire(); 
+      }
+    });
+  }, opts);
+
+  $$('section').forEach(s => obs.observe(s));
+}
+
+let charToggle = 0;
+
+function startCharLoop() {
+  const chars = [
+    document.getElementById('char1'),
+    document.getElementById('char2'),
+    document.getElementById('char3'),
+    document.getElementById('char4')
+  ];
+
+  chars.forEach(c => {
+    c.classList.add('hidden');
+    c.classList.remove('show');
+  });
+
+  chars[0].classList.remove('hidden');
+  chars[0].classList.add('show');
+
+  setInterval(() => {
+    const current = chars[charToggle];
+    const nextIndex = (charToggle + 1) % chars.length;
+    const next = chars[nextIndex];
+
+    current.classList.remove('show');
+    current.classList.add('hidden');
+
+    setTimeout(() => {
+      next.classList.remove('hidden');
+      next.classList.add('show');
+    }, 220);
+
+    charToggle = nextIndex;
+  }, 3200);
+}
+
+
+function animateSteps(selector){
+  const list = document.querySelectorAll(selector + ' li');
+  list.forEach((li, idx) => {
+    setTimeout(()=>{ li.classList.add('visible');
+      const leg = li.querySelector('.leg');
+      if(leg){
+        leg.style.height = (li.nextElementSibling ? (li.offsetHeight + 24) + 'px' : '0px');
+      }
+    }, idx * 320);
+  });
+}
+
+let bgParticles, bgCtx, bgW, bgH, bgRAF;
+
+function initBgParticles(){
+  const canvas = document.getElementById('bgParticlesCanvas');
+  resizeCanvas(canvas);
+  bgCtx = canvas.getContext('2d');
+  bgParticles = [];
+  for(let i=0; i<100; i++) spawnDot();
+  animateBg();
+  window.addEventListener('resize', ()=>resizeCanvas(canvas));
+}
+
+function resizeCanvas(c){
+  c.width = innerWidth; 
+  c.height = innerHeight;
+}
+
+function spawnDot(x,y,life=0){
+  const px = x ?? Math.random()*innerWidth;
+  const py = y ?? Math.random()*innerHeight;
+  const s = 1 + Math.random()*2;
+  const vx = (Math.random()-0.5) * 1.6;
+  const vy = (Math.random()-0.5) * 1.6;
+  const particleLife = life > 0 ? life : 60 + Math.random()*200;
+  bgParticles.push({x:px, y:py, vx, vy, s, age:0, life:particleLife, alpha: 1});
+}
+
+function animateBg(){
+  bgRAF = requestAnimationFrame(animateBg);
+  const canvas = document.getElementById('bgParticlesCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if(Math.random() < 0.5) spawnDot();
+
+  for(let i = bgParticles.length - 1; i >= 0; i--){
+    const p = bgParticles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.age++;
+
+    if(p.x < -20) p.x = canvas.width + 20;
+    if(p.x > canvas.width + 20) p.x = -20;
+    if(p.y < -20) p.y = canvas.height + 20;
+    if(p.y > canvas.height + 20) p.y = -20;
+
+    if(p.age > p.life){
+      p.alpha -= 0.02;
+      if(p.alpha <= 0){
+        bgParticles.splice(i, 1);
+        continue;
+      }
+    }
+
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(56, 189, 248, ${0.12 * p.alpha})`;
+    ctx.arc(p.x, p.y, p.s, 0, Math.PI*2);
+    ctx.fill();
+
+    if(p.age % 80 === 0 && Math.random() < 0.7) {
+      spawnDot(p.x + (Math.random()-0.5)*6, p.y + (Math.random()-0.5)*6, 60);
+    }
+  }
+}
+
+
+let fireParticles = [], fireRAF;
+function initProjectsFire(){
+  const c = $('#projectsFireCanvas');
+  if(!c) return;
+  c.width = innerWidth; c.height = innerHeight;
+}
+function startProjectsFire(){
+  const canvas = document.getElementById('projectsFireCanvas');
+  if(!canvas) return;
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  fireParticles = [];
+  if(fireRAF) cancelAnimationFrame(fireRAF);
+  (function tick(){
+    fireRAF = requestAnimationFrame(tick);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(Math.random() < 0.8) spawnFire(canvas);
+    for(let i = fireParticles.length - 1; i >= 0; i--){
+      const p = fireParticles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life--;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.life / 120);
+      ctx.fillStyle = `rgba(255,${160 + Math.round(Math.random() * 60)}, ${40 + Math.round(Math.random() * 30)}, 0.9)`;
+      ctx.fillRect(p.x, p.y, p.w, p.h);
+      ctx.restore();
+      if(p.life <= 0 || p.y < -300) fireParticles.splice(i, 1);
+    }
+  })();
+}
+function spawnFire(canvas){
+  const x = Math.random() * canvas.width;
+  const y = canvas.height + 10;
+  const vx = (Math.random() - 0.5) * 0.6;
+  const vy = - (3 + Math.random() * 5);
+  const size = 1 + Math.random() * 3;
+  fireParticles.push({x, y, vx, vy, w: 1.5, h: 6 + Math.random() * 8, life: 90 + Math.random() * 90});
+}
+
+let teamRAF;
+function initTeamBg(){
+  const canvas = document.getElementById('teamBgCanvas');
+  if(!canvas) return;
+  canvas.width = innerWidth; 
+  canvas.height = innerHeight;
+  const ctx = canvas.getContext('2d');
+  
+  const blobs = [];
+  for(let i = 0; i < 12; i++) {
+    blobs.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 80 + Math.random() * 220,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      hue: 180 + Math.random() * 60
+    });
+  }
+
+  (function draw(){
+    teamRAF = requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    blobs.forEach(b => {
+      b.x += b.vx;
+      b.y += b.vy;
+
+      if(b.x < -200) b.x = canvas.width + 200;
+      if(b.x > canvas.width + 200) b.x = -200;
+      if(b.y < -200) b.y = canvas.height + 200;
+      if(b.y > canvas.height + 200) b.y = -200;
+
+      const g = ctx.createRadialGradient(b.x, b.y, b.r * 0.1, b.x, b.y, b.r);
+      g.addColorStop(0, `rgba(50, 160, 200, 0.12)`);
+      g.addColorStop(0.4, `rgba(30, 90, 140, 0.06)`);
+      g.addColorStop(1, `rgba(8, 12, 20, 0)`);
+      
+      ctx.fillStyle = g;
+      ctx.fillRect(b.x - b.r, b.y - b.r, b.r * 2, b.r * 2);
+    });
+  })();
+
+  window.addEventListener('resize', () => {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+  });
+}
+
+
+setTimeout(handleNav, 50);
+
+window.addEventListener('beforeunload', ()=>{ cancelAnimationFrame(bgRAF); cancelAnimationFrame(fireRAF); cancelAnimationFrame(teamRAF); });
+
+</script>
+</body>
+</html>
