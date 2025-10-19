@@ -10,7 +10,7 @@ evelina54574_27939 (Game Designerin, Entwicklerin, App Deploymenterin)
 dreimalneunundsechzig (Game Designer, Entwickler)
 fireninja (github: https://github.com/FireeNinjaa, Entwickler)
 
-Wer lust hat das Mandora Network weiter zu führen, bitte auf Discord bei mir (dreimalneunundsechzig) melden, kann euch ggf. wenn FireNinja damit okay ist den RageMP Server zur Verfügung stellen, und weiteres wie zB ACP oder so was nicht auf Github ist. Logos bekommt ihr dann auch von mir. 
+Wer lust hat das Mandora Network weiter zu führen, bitte auf Discord bei mir (dreimalneunundsechzig) melden, dann bekommt ihr von mir alle Logos
 # Es kann nur einer das Network weiter führen! Ich werde die Zeile drüber entfernen, wenn sich einer gemeldet hat. Wenn es so weit ist, dass jemand das Network weiter führen mag, bitte ich jeden der die Sachen von Mandora benutzt die ich hier hochlade, den Namen zu ändern und Logos.
 
 
