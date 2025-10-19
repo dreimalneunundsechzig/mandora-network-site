@@ -18,8 +18,9 @@ Wer lust hat das Mandora Network weiter zu führen, bitte auf Discord bei mir (d
 <img width="1920" height="1077" alt="team" src="https://github.com/user-attachments/assets/0622d25a-a037-45de-bb3c-ae5e4eb85ca5" />
 
 <img width="1920" height="1080" alt="projekte" src="https://github.com/user-attachments/assets/a6c0c2be-43f4-402a-bd5d-276531bd2cce" />
-<img width="1920" height="1080" alt="footer" src="https://github.com/user-attachments/assets/69d34e94-43c<img width="1920" height="1080" alt="rage" src="https://github.com/user-attachments/assets/2cecb894-e045-4c58-9eab-8daae2d14c90" />
-5-4197-802c-aa5737172563" /><img width="1920" height="1080" alt="startseite" src="https://github.com/user-attachments/assets/7611bec0-b395-49c7-9eae-358303c4a046" />
+<img width="1920" height="1080" alt="footer" src="https://github.com/user-attachments/assets/69d34e94-43c5-4197-802c-aa5737172563" />
+<img width="1920" height="1080" alt="rage" src="https://github.com/user-attachments/assets/2cecb894-e045-4c58-9eab-8daae2d14c90" />
+<img width="1920" height="1080" alt="startseite" src="https://github.com/user-attachments/assets/7611bec0-b395-49c7-9eae-358303c4a046" />
 
 <img width="1920" height="1080" alt="about" src="https://github.com/user-attachments/assets/84ef4393-6f7c-4e96-b2e5-efe2a1c8354d" />
 <img width="1920" height="1080" alt="5m" src="https://github.com/user-attachments/assets/d0b1a78d-c699-46f4-98e3-46c695a86e82" />
